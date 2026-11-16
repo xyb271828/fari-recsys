@@ -7,6 +7,7 @@ An activity recommender using synthetic interactions and a separate MovieLens-1M
 | Synthetic activity Recall@100 | 54.88% with the logQ two-tower model and 56.61% with global popularity |
 | Synthetic activity long-tail Recall@100 | 42.46% with the logQ model and 26.88% with global popularity |
 | Native candidate service | 50 achieved QPS, zero failures, and HTTP p99 of 33 ms with stage timing and 46 ms in the control run |
+| Docker candidate service on Apple Silicon | 2,200 successful candidate requests in the control console summary, with 62 ms HTTP p99 against the 20 ms target. The archived control sample reports 59 ms. |
 
 ## Run locally
 
@@ -30,7 +31,7 @@ Start Docker Engine. On macOS, open Docker Desktop and confirm `docker info` sho
 bash services/candidate_service/profile_docker.sh runs/fari runs/fari-docker-profile
 ```
 
-The script builds the candidate image and runs two 45-second Locust experiments at a target of 50 QPS. Read `runs/fari-docker-profile/control.json` and `runs/fari-docker-profile/profile.json` for the results. The included latency results come from native Uvicorn runs. Docker measurements are pending.
+The script builds the candidate image and runs two 45-second Locust experiments at a target of 50 QPS. Read `runs/fari-docker-profile/control.json` and `runs/fari-docker-profile/profile.json` for the results. The [Docker retest report](services/candidate_service/load-test.md#docker-desktop-retest-on-apple-silicon) documents the Apple Silicon run and links to the archived results.
 
 ## Project files
 

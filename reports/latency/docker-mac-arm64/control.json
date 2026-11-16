@@ -1,0 +1,13 @@
+{
+  "deployment": "docker",
+  "image_id": "sha256:8f1488f69c462e1a632e2d2d5f5526c54ab6b9cbcd333965f607d735ce64201d",
+  "duration_seconds": 45,
+  "requests": 2172,
+  "failures": 0,
+  "achieved_qps": 48.267,
+  "locust_http_ms": {
+    "p50": 27.0,
+    "p95": 42.0,
+    "p99": 59.0
+  }
+}
