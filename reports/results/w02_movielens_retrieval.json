@@ -1,0 +1,233 @@
+{
+  "settings": {
+    "dataset": "movielens",
+    "seed": 42,
+    "epochs": 3,
+    "torch": "2.6.0+cpu",
+    "cpu": "x86_64",
+    "torch_threads": 2,
+    "python": "3.12.14",
+    "train_end_day": 222,
+    "validation_end_day": 249,
+    "libraries": {
+      "numpy": "2.3.5",
+      "scipy": "1.15.3",
+      "implicit": "0.7.2",
+      "scikit-learn": "1.6.1"
+    },
+    "config": {
+      "history_length": 16,
+      "tower_width": 32,
+      "batch_size": 256,
+      "lr": 0.003,
+      "temperature": 0.1,
+      "als_factors": 32,
+      "als_regularization": 0.1,
+      "als_iterations": 15,
+      "ease_l2": 100,
+      "popularity_half_life_days": 14
+    }
+  },
+  "data": {
+    "events": 1000209,
+    "outcomes": {
+      "ratings": 1000209,
+      "rating_4_or_5": 575281
+    },
+    "users": 6040,
+    "items": 3883,
+    "sparsity": 0.9573532020200125,
+    "requests": {
+      "train": 11218,
+      "validation": 1888,
+      "test": 8199
+    }
+  },
+  "validation": {
+    "popularity": {
+      "recall@100": 0.30071769831275186,
+      "ndcg@10": 0.1476600994012515,
+      "coverage@100": 0.10970898789595673,
+      "head_recall@100": 0.3356699473671788,
+      "tail_recall@100": 0.0,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "time_decayed_popularity": {
+      "recall@100": 0.3281267782495175,
+      "ndcg@10": 0.14629947237379387,
+      "coverage@100": 0.10430079835178985,
+      "head_recall@100": 0.3378413462673181,
+      "tail_recall@100": 0.0,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "item_item_cf": {
+      "recall@100": 0.12251533812782846,
+      "ndcg@10": 0.05548620032831908,
+      "coverage@100": 0.1800154519701262,
+      "head_recall@100": 0.0979961764497628,
+      "tail_recall@100": 0.02395296508673877,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "als": {
+      "recall@100": 0.13995598155497527,
+      "ndcg@10": 0.04838328186885986,
+      "coverage@100": 0.43780582024208087,
+      "head_recall@100": 0.08076659822039699,
+      "tail_recall@100": 0.0362197866008565,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "ease_r": {
+      "recall@100": 0.14526238193010146,
+      "ndcg@10": 0.051481596982438975,
+      "coverage@100": 0.4058717486479526,
+      "head_recall@100": 0.08388208359885765,
+      "tail_recall@100": 0.03244537998112797,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "two_tower": {
+      "recall@100": 0.06526992361459376,
+      "ndcg@10": 0.0251973299223668,
+      "coverage@100": 0.9945918104558331,
+      "head_recall@100": 0.058415350846137505,
+      "tail_recall@100": 0.03244537998112797,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    },
+    "two_tower_logq": {
+      "recall@100": 0.19882822870955028,
+      "ndcg@10": 0.0888464354498632,
+      "coverage@100": 0.40535668297707955,
+      "head_recall@100": 0.22221435483490287,
+      "tail_recall@100": 0.005008347245409015,
+      "head_tail_target_counts": [
+        42369,
+        13777
+      ]
+    }
+  },
+  "test": {
+    "popularity": {
+      "recall@100": 0.23825305103104227,
+      "ndcg@10": 0.03254861551173306,
+      "coverage@100": 0.11073911923770281,
+      "head_recall@100": 0.3148364485981308,
+      "tail_recall@100": 0.0,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "time_decayed_popularity": {
+      "recall@100": 0.27254431003418916,
+      "ndcg@10": 0.03125398145924945,
+      "coverage@100": 0.10455833118722638,
+      "head_recall@100": 0.3259080288870008,
+      "tail_recall@100": 0.00017884821747943245,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "item_item_cf": {
+      "recall@100": 0.19679606874261787,
+      "ndcg@10": 0.03135403584870779,
+      "coverage@100": 0.1944372907545712,
+      "head_recall@100": 0.27917905692438405,
+      "tail_recall@100": 0.006259687611780136,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "als": {
+      "recall@100": 0.22741131095826123,
+      "ndcg@10": 0.025635639107267405,
+      "coverage@100": 0.4599536440896214,
+      "head_recall@100": 0.23085705182667798,
+      "tail_recall@100": 0.043042804340050075,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "ease_r": {
+      "recall@100": 0.21797304152406918,
+      "ndcg@10": 0.029305982889277604,
+      "coverage@100": 0.4424414112799382,
+      "head_recall@100": 0.23582200509770604,
+      "tail_recall@100": 0.031656134493859546,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "two_tower": {
+      "recall@100": 0.07392826017437598,
+      "ndcg@10": 0.010879242816780545,
+      "coverage@100": 0.9989698686582539,
+      "head_recall@100": 0.07476635514018691,
+      "tail_recall@100": 0.04900441158936449,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    },
+    "two_tower_logq": {
+      "recall@100": 0.19249851575519294,
+      "ndcg@10": 0.025361811958946438,
+      "coverage@100": 0.4475920679886686,
+      "head_recall@100": 0.2580979184367035,
+      "tail_recall@100": 0.01090974126624538,
+      "head_tail_target_counts": [
+        37664,
+        16774
+      ]
+    }
+  },
+  "test_recall_lift_vs_popularity": {
+    "two_tower": {
+      "delta": -0.1643247908566663,
+      "ci95": [
+        -0.1773828439427144,
+        -0.15136208518625527
+      ]
+    },
+    "two_tower_logq": {
+      "delta": -0.04575453527584932,
+      "ci95": [
+        -0.05667139612478438,
+        -0.035367688516448004
+      ]
+    }
+  },
+  "training_loss_by_epoch": {
+    "two_tower": [
+      5.120778415334013,
+      4.779419979404737,
+      4.618023893098081
+    ],
+    "two_tower_logq": [
+      5.29029108967156,
+      4.90034625847454,
+      4.707754854488481
+    ]
+  },
+  "user_id_ablation_recall_delta": null
+}

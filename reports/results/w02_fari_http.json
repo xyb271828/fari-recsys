@@ -1,0 +1,13 @@
+{
+  "hardware": "AMD EPYC 9V74 x86_64",
+  "deployment": "single local Uvicorn worker, same host as Locust",
+  "duration_seconds": 45,
+  "target_qps": 50,
+  "candidates_per_request": 200,
+  "requests": 2250,
+  "failures": 0,
+  "achieved_qps": 50.0,
+  "p50_ms": 26,
+  "p95_ms": 43,
+  "p99_ms": 59
+}

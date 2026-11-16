@@ -1,0 +1,13 @@
+{
+  "deployment": "native",
+  "image_id": null,
+  "duration_seconds": 45,
+  "requests": 2250,
+  "failures": 0,
+  "achieved_qps": 50.0,
+  "locust_http_ms": {
+    "p50": 20.0,
+    "p95": 33.0,
+    "p99": 46.0
+  }
+}

@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fari-recsys"
+version = "0.2.0"
+description = "Two-tower activity recommendations and candidate serving"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "numpy==2.3.5", "faiss-cpu==1.11.0", "lightgbm==4.6.0",
+  "fastapi==0.115.12", "uvicorn==0.34.2",
+  "scikit-learn==1.6.1", "httpx==0.28.1"
+]
+
+[project.optional-dependencies]
+recsys = [
+  "torch==2.6.0", "scipy==1.15.3", "implicit==0.7.2",
+  "locust==2.34.0", "matplotlib==3.10.3", "pandas==2.2.3",
+  "nbformat==5.10.4", "ipykernel==6.29.5"
+]
+dev = ["pytest==8.3.5", "ruff==0.11.13"]
+
+[tool.setuptools.packages.find]
+include = ["discoverylib*", "recsys*", "services*"]
