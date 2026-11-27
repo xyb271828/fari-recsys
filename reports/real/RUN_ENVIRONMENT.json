@@ -1,0 +1,24 @@
+{
+  "cpu_model": "AMD EPYC 9V74 80-Core Processor",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "system": "Linux",
+  "architecture": "x86_64",
+  "torch_threads": 2,
+  "blas_environment": {
+    "OPENBLAS_NUM_THREADS": "2",
+    "OMP_NUM_THREADS": "2"
+  },
+  "commands": [
+    "python -m recsys.real_benchmark --dataset movielens --source data/ml-1m.zip --output runs/real/movielens",
+    "python -m recsys.real_benchmark --dataset kuairand --source data/KuaiRand-Pure/data --output runs/real/kuairand"
+  ],
+  "packages": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "torch": "2.6.0+cpu",
+    "implicit": "0.7.2",
+    "scikit-learn": "1.8.0"
+  },
+  "note": "The two CPU benchmark processes ran concurrently. Wall times are not isolated model latency measurements."
+}

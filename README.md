@@ -1,5 +1,22 @@
 # Fari RecSys
 
+## Real-data recommendation evaluation
+
+MovieLens-1M and KuaiRand-Pure now have a shared, audited temporal retrieval
+benchmark comparing popularity, time-decayed popularity, EASE, ALS and two-tower
+models with/without logQ correction. Parameters and checkpoints are selected on
+validation only; stochastic models use three initialization seeds. KuaiRand's
+standard-policy and random-exposure tests are reported separately.
+
+- [Measured results and paired confidence intervals](reports/real/SUMMARY.md)
+- [Protocol, dataset sources and reproduction commands](reports/real/README.md)
+- [Pinned benchmark environment](requirements-real-benchmark.txt)
+
+These are offline public-data evaluations. The candidate-service latency results
+below describe the earlier synthetic activity snapshot, not these public-data models.
+
+## Earlier activity pipeline and serving
+
 An activity recommender using synthetic interactions and a separate MovieLens-1M benchmark. The pipeline compares popularity and collaborative-filtering baselines with two-tower retrieval, and applies LightGBM ranking and MMR in the synthetic activity experiment. A FastAPI service exposes FAISS HNSW retrieval with a popularity fallback.
 
 | Result | Measured comparison |
