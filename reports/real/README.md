@@ -31,6 +31,9 @@ not exhaustive or equal-compute tuning. Both tower variants use the same seed,
 architecture, minibatch shuffle and training budget. Deduplicated in-batch negatives
 use an inclusion-probability logQ correction; other positives in the same request
 are masked out of the negative columns. Unobserved interactions remain unknown.
+These sampled contrasts are not verified dislikes; masking does not remove every
+possible false negative from other requests for the same user. The sampling
+correction is not a correction for exposure bias in the original recommendation policy.
 
 ALS and both tower variants use initialization seeds 42/43/44; deterministic
 baselines run once. Aggregate metrics average seed-specific measurements, not
@@ -102,3 +105,16 @@ and extracts only the three
 required CSV files. The runner records actual input SHA-256 hashes, split counts,
 parameter trials, selected checkpoints, epoch losses and package versions. The
 GitHub Actions workflow can reproduce both datasets and upload raw result artifacts.
+
+After both commands finish, render the comparison table directly from their JSON:
+
+```sh
+python -m recsys.summarize_real --input runs/real --output reports/real/SUMMARY.md
+```
+
+The committed result JSON files are under `movielens/` and `kuairand/` in this
+directory. Per-user NPZ files are generated under `runs/real/` and retained as
+workflow artifacts when the reproduction workflow runs; they are not committed.
+The NPZ metric columns are `[Recall@100, NDCG@10]`, with separate user-ID keys for
+each model; dataset-local integer IDs allow user-paired reanalysis. Local hardware
+and concurrent-run conditions are recorded in `RUN_ENVIRONMENT.json`.
