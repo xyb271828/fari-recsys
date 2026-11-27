@@ -1,0 +1,8 @@
+# Python 3.12. Install torch from the CPU wheel index first (see report).
+numpy==2.3.5
+scipy==1.17.0
+pandas==2.2.3
+scikit-learn==1.8.0
+torch==2.6.0
+implicit==0.7.2
+pytest==9.2.0

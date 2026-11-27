@@ -1,0 +1,38 @@
+name: Real-data recommendation benchmarks
+on:
+  workflow_dispatch:
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    strategy:
+      fail-fast: false
+      matrix:
+        dataset: [movielens, kuairand]
+    env:
+      OPENBLAS_NUM_THREADS: '2'
+      OMP_NUM_THREADS: '2'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m pip install -r requirements-real-benchmark.txt
+      - run: python -m pytest tests/test_real_benchmark.py -q
+      - run: python -m recsys.download_real --output data
+      - name: Run fixed benchmark protocol
+        shell: bash
+        run: |
+          if [ '${{ matrix.dataset }}' = 'movielens' ]; then
+            benchmark_source=data/ml-1m.zip
+          else
+            benchmark_source=data/KuaiRand-Pure/data
+          fi
+          python -m recsys.real_benchmark --dataset '${{ matrix.dataset }}' --source "$benchmark_source" --output 'runs/real/${{ matrix.dataset }}'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: real-recommendation-${{ matrix.dataset }}
+          path: runs/real/
